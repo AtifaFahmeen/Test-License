@@ -15,19 +15,32 @@ headers:
 - 'Content-Type: application/json'
 testCases:
 - id: 1
-  body: "{\r\n  \"accountNonExpired\" : false,\r\n  \"accountNonLocked\" : false,\r\
-    \n  \"company\" : \"{{@Faker.company.name}}\",\r\n  \"createdBy\" : \"\",\r\n\
-    \  \"createdDate\" : \"\",\r\n  \"credentialsNonExpired\" : false,\r\n  \"email\"\
-    \ : \"{{@Faker.internet.emailAddress}}\",\r\n  \"enabled\" : false,\r\n  \"id\"\
-    \ : \"\",\r\n  \"inactive\" : false,\r\n  \"jobTitle\" : \"{{@Faker.job.title}}\"\
-    ,\r\n  \"location\" : \"{{@Random}}\",\r\n  \"modifiedBy\" : \"\",\r\n  \"modifiedDate\"\
-    \ : \"\",\r\n  \"name\" : \"{{@Random}}\",\r\n  \"password\" : \"{{@PassAlphaNumSpl}}\"\
-    ,\r\n  \"privileges\" : [ \"{{@Random}}\" ],\r\n  \"username\" : \"{{@Faker.name.username}}\"\
-    ,\r\n  \"version\" : \"\"\r\n}"
+  body: |-
+    {
+      "accountNonExpired" : false,
+      "accountNonLocked" : false,
+      "company" : "{{@Faker.company.name}}",
+      "createdBy" : "",
+      "createdDate" : "",
+      "credentialsNonExpired" : false,
+      "email" : "{{@Faker.internet.emailAddress}}",
+      "enabled" : false,
+      "id" : "",
+      "inactive" : false,
+      "jobTitle" : "{{@Faker.job.title}}",
+      "location" : "{{@Random}}",
+      "modifiedBy" : "",
+      "modifiedDate" : "",
+      "name" : "{{@Random}}",
+      "password" : "{{@PassAlphaNumSpl}}",
+      "privileges" : [ "{{@Random}}" ],
+      "username" : "{{@Faker.name.username}}",
+      "version" : ""
+    }
   inactive: false
 useCategoryAssertion: false
 assertions:
-- '@StatusCode == 401 OR @StatusCode == 403'
+- '@StatusCode == 401 OR @StatusCode == 403 @StatusCode == 500'
 cleanup: []
 severity: Critical
 category: Unsecured
@@ -40,6 +53,7 @@ tags:
 - Broken Authentication
 - Security Misconfiguration
 - Non-Intrusive
+- '[2020 CWE TOP 24] CWE - 306'
 inactive: false
 policies:
   initExec: Request

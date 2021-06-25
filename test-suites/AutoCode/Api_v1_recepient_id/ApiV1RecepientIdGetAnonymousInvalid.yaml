@@ -16,7 +16,7 @@ headers:
 testCases: []
 useCategoryAssertion: false
 assertions:
-- '@StatusCode == 401 OR @StatusCode == 403'
+- '@StatusCode == 401 OR @StatusCode == 403 @StatusCode == 500'
 cleanup: []
 severity: Critical
 category: Unsecured
@@ -29,6 +29,7 @@ tags:
 - Broken Authentication
 - Security Misconfiguration
 - Non-Intrusive
+- '[2020 CWE TOP 24] CWE - 306'
 inactive: false
 policies:
   initExec: Request
